@@ -1,0 +1,11 @@
+{
+  "name": "accessibility",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "author": "Andrei Navumau",
+  "license": "ISC",
+  "description": ""
+}

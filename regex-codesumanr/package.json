@@ -1,0 +1,14 @@
+{
+  "name": "regex",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress test"
+  },
+  "author": "Andrei Navumau",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.20.1"
+  }
+}

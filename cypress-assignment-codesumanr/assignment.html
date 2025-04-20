@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment - Login/Password Forms</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+        .form-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+        .input_error {
+            background-color: #ffafcc;
+        }
+        fieldset { margin-bottom: 20px; }
+        .output { display: none; }
+        .output__text { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Form Example</h1>
+
+        <!-- Navigation Links -->
+        <div class="navigation-links">
+            <a href="?login=true" id="login_field">Login Field</a>
+            <a href="?password=true" id="password_field">Password Field</a>
+        </div>
+
+        <!-- Login Form (Initially Hidden) -->
+        <form id="login_form" novalidate style="display: none;">
+            <fieldset>
+                <legend>Login Details</legend>
+                <label for="name_input">Name</label>
+                <input type="text" id="name_input" name="name">
+
+                <label for="email_input">Email</label>
+                <input type="text" id="email_input" name="email">
+
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+
+        <!-- Password Form (Initially Hidden) -->
+        <form id="password_form" novalidate style="display: none;">
+             <fieldset>
+                <legend>Credentials</legend>
+                <label for="username_input">Username</label>
+                <input type="text" id="username_input" name="username">
+
+                <label for="password_input">Password</label>
+                <input type="text" id="password_input" name="password">
+
+                <button type="submit">Submit</button>
+             </fieldset>
+        </form>
+
+        <!-- Output Area (Initially Hidden) -->
+        <div id="output_container" class="output">
+            <p class="output__text">The values in your form are: <span id="output_values"></span></p>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file -->
+    <script src="assignment.js" defer></script>
+</body>
+</html>

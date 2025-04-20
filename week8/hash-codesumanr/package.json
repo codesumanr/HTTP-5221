@@ -1,0 +1,16 @@
+{
+  "name": "w24_hash",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "eslint": "eslint"
+  },
+  "author": "Andrei Navumau",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^14.0.3",
+    "eslint": "^9.21.0"
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTTP5221 Lab</title>
+    <style>
+        .invalid {
+            border: 2px solid rgb(255, 0, 0); /* Red border for invalid fields */
+        }
+        #success_message {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validation</h1>
+    <form id="validation_form" novalidate>
+        <div>
+            <label for="name_input">Name:</label>
+            <input type="text" id="name_input" name="name" aria-describedby="name_error">
+            <span id="name_error" class="error" aria-live="polite"></span>
+        </div>
+        <div>
+            <label for="salary_input">Salary:</label>
+            <input type="text" id="salary_input" name="salary" aria-describedby="salary_error">
+            <span id="salary_error" class="error" aria-live="polite"></span>
+        </div>
+        <div>
+            <label for="postal_input">Postal Code:</label>
+            <input type="text" id="postal_input" name="postal" aria-describedby="postal_error">
+            <span id="postal_error" class="error" aria-live="polite"></span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="success_message"></div>
+
+    <script src="validation.js"></script>
+</body>
+</html>

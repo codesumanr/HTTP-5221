@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    text-align: center;
+    color: #023047;
+    font-size: 22px;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+ol {
+    text-align: left;
+}
+
+#content-wrapper {
+	width: 730px;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+.nav {
+	margin-bottom: 15px;
+	text-decoration: none;
+}
+
+#nav li {
+	list-style: none;
+	border: 1px solid black;
+	padding: 5px 15px;
+}
+
+#nav a {
+	text-decoration: none;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP5221 Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>HTTP5221 Lab</h1>
+  <form id="book-form" novalidate>
+    <!-- Personal Information -->
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div>
+        <label for="first_input">First Name</label>
+        <input type="text" id="first_input" name="first_input" required>
+        <div class="error-message" id="first_input_error"></div>
+      </div>
+      <div>
+        <label for="last_input">Last Name</label>
+        <input type="text" id="last_input" name="last_input" required>
+        <div class="error-message" id="last_input_error"></div>
+      </div>
+      <div>
+        <label for="email_input">Email</label>
+        <input type="email" id="email_input" name="email_input" required>
+        <div class="error-message" id="email_input_error"></div>
+      </div>
+    </fieldset>
+
+    <!-- Book 1 -->
+    <fieldset>
+      <legend>Book 1</legend>
+      <div>
+        <label for="title_input_1">Book Title</label>
+        <input type="text" id="title_input_1" name="title_input_1" required>
+        <div class="error-message" id="title_input_1_error"></div>
+      </div>
+      <div>
+        <label for="author_input_1">Author</label>
+        <input type="text" id="author_input_1" name="author_input_1" required>
+        <div class="error-message" id="author_input_1_error"></div>
+      </div>
+      <div>
+        <label for="price_input_1">Price</label>
+        <input type="number" id="price_input_1" name="price_input_1" step="0.01" required>
+        <div class="error-message" id="price_input_1_error"></div>
+      </div>
+    </fieldset>
+
+    <!-- Book 2 -->
+    <fieldset>
+      <legend>Book 2</legend>
+      <div>
+        <label for="title_input_2">Book Title</label>
+        <input type="text" id="title_input_2" name="title_input_2" required>
+        <div class="error-message" id="title_input_2_error"></div>
+      </div>
+      <div>
+        <label for="author_input_2">Author</label>
+        <input type="text" id="author_input_2" name="author_input_2" required>
+        <div class="error-message" id="author_input_2_error"></div>
+      </div>
+      <div>
+        <label for="price_input_2">Price</label>
+        <input type="number" id="price_input_2" name="price_input_2" step="0.01" required>
+        <div class="error-message" id="price_input_2_error"></div>
+      </div>
+    </fieldset>
+
+    <!-- Book 3 -->
+    <fieldset>
+      <legend>Book 3</legend>
+      <div>
+        <label for="title_input_3">Book Title</label>
+        <input type="text" id="title_input_3" name="title_input_3" required>
+        <div class="error-message" id="title_input_3_error"></div>
+      </div>
+      <div>
+        <label for="author_input_3">Author</label>
+        <input type="text" id="author_input_3" name="author_input_3" required>
+        <div class="error-message" id="author_input_3_error"></div>
+      </div>
+      <div>
+        <label for="price_input_3">Price</label>
+        <input type="number" id="price_input_3" name="price_input_3" step="0.01" required>
+        <div class="error-message" id="price_input_3_error"></div>
+      </div>
+    </fieldset>
+
+    <button type="submit">Save</button>
+  </form>
+
+  <!-- Display Section -->
+  <section id="book-list"></section>
+  <p id="total-price"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>

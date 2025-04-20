@@ -1,0 +1,29 @@
+const checkNumber = require("./check.js");
+
+describe('checkNumber', () => {
+    const missingInput = 'Missing input';
+    const wrongNumber = 'Wrong number';
+    const isLessMessage = 'Your number is less than secret. Try again.';
+    const isMoreMessage = 'Your number is more than secret. Try again.';
+    const congratulations = 'Congratulations!';
+
+    const testCases = [
+        // Edge cases
+        { input: 16, expected: wrongNumber },
+        { input: 17, expected: isLessMessage },
+        { input: 18, expected: isLessMessage },
+        { input: 98, expected: isMoreMessage },
+        { input: 99, expected: isMoreMessage },
+        { input: 100, expected: wrongNumber },
+        // Valid
+        { input: 87, expected: congratulations },
+        // Three popular not number values
+        { input: 'not a number', expected: missingInput },
+        { input: undefined, expected: missingInput },
+        { input: null, expected: missingInput },
+    ];
+
+    testCases.forEach(({ input, expected }) =>
+        it(`should return "${expected}" for ${input}`, () => expect(checkNumber(input)).toBe(expected))
+    );
+});

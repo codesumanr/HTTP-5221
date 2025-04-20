@@ -1,0 +1,14 @@
+{
+  "name": "git_practice",
+  "version": "1.0.0",
+  "description": "This is an evaluation test to assess your ability to use Git in your workflow. Please review the instructions below for details.",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "author": "Andrei Navumau",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}

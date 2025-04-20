@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>HTTP5221 Lab</title>
+		<link href="fave.css" rel="stylesheet" type="text/css" />
+		<script src="fave.js"></script>
+	</head>
+
+	<!--
+
+This code has one error. Please, identify it and fix it.
+
+The task:
+
+Create Javascript file to perform the following:
+
+When the page initially loads, only form should be visible.
+The section dedicated for the list of people below the form should
+be hidden both for visual users and screen readers. To hide section
+from visual add css code to fave.css.
+
+When user adds three names and their phone numbers into the form
+and clicks 'Save My Fave Three':
+
+- A list of added persons should be created.
+- This list should be displayed inside #fave-list element with correct html structure.
+- The form should become hidden (both visually and from screen readers).
+- The fave list should be displayed in this way:
+
+'Name: <name from input> Phone: <phone from input>'
+
+If user submits blank value for any of the fields, mark this field as invalid for
+screen readers. Do not create a list of persons below the form.
+
+If user fixes their input, restore the validity of this input for
+screen readers and show the list of persons below the form.
+
+Do not add an error message or custom styling for error for this task.
+
+Do not change the html structure of this file. Modify it only with JS code if necessary.
+You may add attributes to html code if needed.
+No inline JS code, please create separate JS file (name it as you wish).
+Do not copy other student's code.
+Do not use AI code.
+
+Hints:
+Create class Friend and use it to create objects related to form input data.
+Loop through the data to create result for displaying on the page.
+
+
+-->
+
+	<body>
+		<h1>Welcome to your first Lab!</h1>
+		<h2>Fave Three List</h2>
+
+		<section class="form">
+			<form name="fave_form" action="#" method="get" novalidate>
+				<fieldset>
+					<legend>Enter the Names of Your Favourite Three &amp; their Phone Numbers</legend>
+					<section class="entry">
+						<p>Favourite 1</p>
+						<section class="field">
+							<label for="name_1">Name:</label>
+							<input type="text" name="name1" id="name_1" required />
+						</section>
+						<section class="field">
+							<label for="phone_1">Phone:</label>
+							<input type="text" name="phone1" id="phone_1" required/>
+						</section>
+					</section>
+					<section class="entry">
+						<p>Favourite 2</p>
+						<section class="field">
+							<label for="name_2">Name:</label>
+							<input type="text" name="name2" id="name_2" required/>
+						</section>
+						<section class="field">
+							<label for="phone_2">Phone:</label>
+							<input type="text" name="phone2" id="phone_2" required/>
+						</section>
+					</section>
+					<section class="entry">
+						<p>Favourite 3</p>
+						<section class="field">
+							<label for="name_3">Name:</label>
+							<input type="text" name="name3" id="name_3" required/>
+						</section>
+						<section class="field">
+							<label for="phone_3">Phone:</label>
+							<input type="text" name="phone3" id="phone_3" required/>
+						</section>
+					</section>
+				</fieldset>
+				<input type="submit" value="Save My Fave Three" />
+			</form>
+		</section>
+
+		<section id="fave-block">
+			<h2>My Fave Three</h2>
+			<ol id="fave-list"></ol>
+		</section>
+
+	</body>
+</html>

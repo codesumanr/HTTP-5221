@@ -1,0 +1,31 @@
+
+const validateMonth = require("./lab.js");
+
+describe('validateMonth', () => {
+    const errorMessage = 'Error! Choose between 1 and 12.';
+    const goodJobMessage = 'Good job!';
+    const tryAgainMessage = 'Try again.';
+    const nothingProvidedMessage = 'Nothing was provided';
+
+    const testCases = [
+        // Edge cases
+        { input: 0, expected: errorMessage },
+        { input: 1, expected: goodJobMessage },
+        { input: 2, expected: goodJobMessage },
+        { input: 11, expected: goodJobMessage },
+        { input: 12, expected: goodJobMessage },
+        { input: 13, expected: errorMessage },
+        // Valid not current
+        { input: 5, expected: goodJobMessage },
+        // Valid current
+        { input: 10, expected: tryAgainMessage },
+        // Three popular not number values
+        { input: 'not a number', expected: errorMessage },
+        { input: undefined, expected: nothingProvidedMessage },
+        { input: null, expected: nothingProvidedMessage },
+    ];
+
+    testCases.forEach(({ input, expected }) =>
+        it(`should return "${expected}" for ${input}`, () => expect(validateMonth(input)).toBe(expected))
+    );
+});

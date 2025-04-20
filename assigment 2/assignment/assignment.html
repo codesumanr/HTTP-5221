@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP5221 Lab</title>
+    <style>
+        .invalid {
+            border: 2px solid rgb(255, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Number Validation</h1>
+        <form id="numberForm" novalidate>
+            <div>
+                <label for="check_number">Number</label>
+                <input type="text" id="check_number" name="number" 
+                       aria-describedby="result">
+            </div>
+            <button type="submit">Check Number</button>
+        </form>
+        <div id="result" role="alert" aria-live="polite" hidden></div>
+    </main>
+    <script src="check.js"></script>
+    <script src="display.js"></script>
+</body>
+</html>

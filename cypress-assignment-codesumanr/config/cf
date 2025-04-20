@@ -1,0 +1,226 @@
+describe('Login/Password Form Tests', () => {
+    beforeEach(() => cy.visit('assignment.html'));
+
+    describe("Initial Page Load", () => {
+        it("should have main heading on the page (h1)", () => {
+            cy.get('h1').its('length').then(length => assert.equal(length, 1));
+        });
+
+        it('should not display any forms by default', () => {
+            cy.get('#login_form').should('not.be.visible');
+            cy.get('#password_form').should('not.be.visible');
+        });
+
+        it('forms should have "novalidate" attribute', () => {
+            cy.get('#login_form').should('have.attr', 'novalidate');
+            cy.get('#password_form').should('have.attr', 'novalidate');
+        });
+
+        it('should have correct navigation buttons with proper IDs', () => {
+            cy.get('#login_field').should('exist').and('have.text', 'Login Field');
+            cy.get('#password_field').should('exist').and('have.text', 'Password Field');
+        });
+    });
+    describe('HTML Validation of Name and Email fields', () => {
+        beforeEach(() => {
+            cy.get('#login_field').click();
+        });
+        [
+            { selector: 'name_input', label: 'Name' },
+            { selector: 'email_input', label: 'Email' },
+        ].forEach(({ selector, label }) => {
+            describe(`${selector}`, () => {
+                it(`#${selector} element should have label "${label}"`, () => {
+                    cy.get(`label[for="${selector}"]`).first().invoke('text').then(text => assert.equal(text.replace(/['"]/g, '').trim(), label))
+                });
+                it(`#${selector} should have correct type`, () => {
+                    cy.get(`#${selector}`).should('have.attr', 'type', 'text');
+                });
+                it(`#${selector} should have name attribute`, () => {
+                    cy.get(`#${selector}`)
+                        .should('have.attr', 'name')
+                        .and('not.be.empty');
+                });
+            });
+        });
+    });
+
+    describe('HTML Validation of Username and Password fields', () => {
+        beforeEach(() => {
+            cy.get('#password_field').click();
+        });
+        [
+            { selector: 'username_input', label: 'Username' },
+            { selector: 'password_input', label: 'Password' },
+        ].forEach(({ selector, label }) => {
+            describe(`${selector}`, () => {
+                it(`#${selector} element should have label "${label}"`, () => {
+                    cy.get(`label[for="${selector}"]`).first().invoke('text').then(text => assert.equal(text.replace(/['"]/g, '').trim(), label))
+                });
+                it(`#${selector} should have correct type`, () => {
+                    cy.get(`#${selector}`).should('have.attr', 'type', 'text');
+                });
+                it(`#${selector} should have name attribute`, () => {
+                    cy.get(`#${selector}`)
+                        .should('have.attr', 'name')
+                        .and('not.be.empty');
+                });
+            });
+        });
+    });
+
+    describe("Form Visibility Tests", () => {
+        it('should display login form when "Login Field" is clicked', () => {
+            cy.get('#login_field').click();
+            cy.get('#login_form').should('be.visible');
+            cy.get('#password_form').should('not.be.visible');
+        });
+
+        it('should display password form when "Password Field" is clicked', () => {
+            cy.get('#password_field').click();
+            cy.get('#password_form').should('be.visible');
+            cy.get('#login_form').should('not.be.visible');
+        });
+    });
+
+    describe("Login Form Validation", () => {
+        beforeEach(() => {
+            cy.get('#login_field').click();
+        });
+
+        it('should show error on #name_input when both fields are empty', () => {
+            cy.get('#login_form').submit();
+            cy.get('#name_input')
+                .should('have.class', 'input_error')
+                .should('be.focused');
+            cy.get('#email_input')
+                .should('not.have.class', 'input_error')
+                .should('not.be.focused');
+        });
+
+        it('should show error on #name_input when Name is empty and Email is not', () => {
+            cy.get('#email_input').type('test@example.com');
+            cy.get('#login_form').submit();
+            cy.get('#name_input')
+                .should('have.class', 'input_error')
+                .should('be.focused');
+            cy.get('#email_input')
+                .should('not.have.class', 'input_error')
+                .should('not.be.focused');
+        });
+
+        it('should show error on #email_input when Email is empty and Name is not', () => {
+            cy.get('#name_input').type('Test User');
+            cy.get('#login_form').submit();
+            cy.get('#email_input')
+                .should('have.class', 'input_error')
+                .should('be.focused');
+            cy.get('#name_input')
+                .should('not.have.class', 'input_error')
+                .should('not.be.focused');
+        });
+
+        it('should submit successfully when both fields are filled', () => {
+            const name = 'Test User';
+            const email = 'test@example.com';
+
+            cy.get('#name_input').type(name);
+            cy.get('#email_input').type(email);
+            cy.get('#login_form').submit();
+
+            cy.get('#output_container').should('be.visible');
+            cy.get('#output_values').should('contain', `${name}, ${email}`);
+
+            // Verify fields are cleared
+            cy.get('#name_input').should('have.value', '');
+            cy.get('#email_input').should('have.value', '');
+
+            // Verify no error classes
+            cy.get('#name_input').should('not.have.class', 'input_error');
+            cy.get('#email_input').should('not.have.class', 'input_error');
+        });
+    });
+
+    describe("Password Form Validation", () => {
+        beforeEach(() => {
+            cy.get('#password_field').click();
+        });
+
+        it('should show error on #username_input when both fields are empty', () => {
+            cy.get('#password_form').submit();
+            cy.get('#username_input')
+                .should('have.class', 'input_error')
+                .should('be.focused');
+            cy.get('#password_input')
+                .should('not.have.class', 'input_error')
+                .should('not.be.focused');
+        });
+
+        it('should show error on #username_input when Username is empty and Password is not', () => {
+            cy.get('#password_input').type('test123');
+            cy.get('#password_form').submit();
+            cy.get('#username_input')
+                .should('have.class', 'input_error')
+                .should('be.focused');
+            cy.get('#password_input')
+                .should('not.have.class', 'input_error')
+                .should('not.be.focused');
+        });
+
+        it('should show error on #password_input when Password is empty and Username is not', () => {
+            cy.get('#username_input').type('testuser');
+            cy.get('#password_form').submit();
+            cy.get('#password_input')
+                .should('have.class', 'input_error')
+                .should('be.focused');
+            cy.get('#username_input')
+                .should('not.have.class', 'input_error')
+                .should('not.be.focused');
+        });
+
+        it('should submit successfully when both fields are filled', () => {
+            const username = 'testuser';
+            const password = 'test123';
+
+            cy.get('#username_input').type(username);
+            cy.get('#password_input').type(password);
+            cy.get('#password_form').submit();
+
+            cy.get('#output_container').should('be.visible');
+            cy.get('#output_values').should('contain', `${username}, ${password}`);
+
+            // Verify fields are cleared
+            cy.get('#username_input').should('have.value', '');
+            cy.get('#password_input').should('have.value', '');
+
+            // Verify no error classes
+            cy.get('#username_input').should('not.have.class', 'input_error');
+            cy.get('#password_input').should('not.have.class', 'input_error');
+        });
+    });
+
+    describe("Field and Form IDs Verification", () => {
+        it('should have all required fields and forms with correct IDs', () => {
+            // Navigation buttons
+            cy.get('#login_field').should('exist');
+            cy.get('#password_field').should('exist');
+
+            // Forms
+            cy.get('#login_form').should('exist');
+            cy.get('#password_form').should('exist');
+
+            // Login form fields
+            cy.get('#login_field').click();
+            cy.get('#name_input').should('exist');
+            cy.get('#email_input').should('exist');
+
+            // Password form fields
+            cy.get('#password_field').click();
+            cy.get('#username_input').should('exist');
+            cy.get('#password_input').should('exist');
+
+            // Output container
+            cy.get('#output_container').should('exist');
+        });
+    });
+});
